@@ -1,7 +1,7 @@
 # Vulnerable Web Application 
 
 ![VulnWeb](https://github.com/OWASP/Vulnerable-Web-Application/blob/master/Resources/VulnWeb.png)
-
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=OlaiPG_juice-shop&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=OlaiPG_juice-shop)
 ## What is Vulnerable-Web-Application
 
 Vulnerable-Web-Application is a website that is prepared for people who are interested in web penetration and who want to have
