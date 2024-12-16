@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="shortcut icon" href="../Resources/hmbct.png" />
+    <link rel="shortcut icon" href="../Resources/hmbct.png" />
 </head>
 <body>
 <div style="background-color:#c9c9c9;padding:15px;">
@@ -21,11 +21,17 @@
 
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
-	$target_dir = "uploads/";
-	$target_file = $target_dir . basename($_FILES["file"]["name"]);
-	
-    move_uploaded_file($_FILES["file"]["tmp_name"], $target_file);
-    echo "File uploaded /uploads/".$_FILES["file"]["name"];
+    $target_dir = "uploads/";
+    $target_file = $target_dir . basename($_FILES["file"]["name"]);
+
+    // Verificar si es una imagen real
+    $check = getimagesize($_FILES["file"]["tmp_name"]);
+    if($check !== false) {
+        move_uploaded_file($_FILES["file"]["tmp_name"], $target_file);
+        echo "File successfully uploaded.";
+    } else {
+        echo "File is not an image.";
+    }
 }
 ?>
 </body>
