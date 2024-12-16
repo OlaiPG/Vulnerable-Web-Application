@@ -27,7 +27,7 @@
             // Obtener la entrada del usuario y validarla
             $file = $_GET['file'];
             if (in_array($file, $allowed_files)) {
-               @include($file);
+               @include $file; // Aquí se removieron los paréntesis
                echo "<div align='center'><b><h5>" . htmlspecialchars($file) . "</h5></b></div>";
             } else {
                echo "<div align='center'><b><h5>Archivo no permitido</h5></b></div>";
