@@ -16,18 +16,13 @@
         <p>Give me book's number and I give you book's name in my library.</p>
         Book's number: <input type="text" name="number">
         <input type="submit" name="submit" value="Submit">
-        <!-- <p>Im learning something, I think?
-            I will sanitize query this time!!
-            //I'm the best web developer.
-             //number is too dangerous. I have to do something.</p>
-        -->
     </form>
 </div>
 
 <?php
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $password = getenv('MYSQL_SECURE_PASSWORD'); // Obtener la contraseña segura de la variable de entorno
     $db = "1ccb8097d0e9ce9f154608be60224c7c";
 
     // Crear conexión
@@ -39,7 +34,7 @@
     }
 
     if (isset($_POST["submit"])) {
-        $number = $_POST['number'];
+        $number = htmlspecialchars($_POST['number']); // Sanitizar la entrada
 
         // Evitar construir la consulta directamente
         $stmt = $conn->prepare("SELECT bookname, authorname FROM books WHERE number = ?");
