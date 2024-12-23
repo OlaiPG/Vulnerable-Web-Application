@@ -21,20 +21,19 @@
 <?php
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $password = getenv('MYSQL_SECURE_PASSWORD'); // Obtener la contraseña segura de la variable de entorno
     $db = "1ccb8097d0e9ce9f154608be60224c7c";
 
-    // Create connection
+    // Crear conexión
     $conn = new mysqli($servername, $username, $password, $db);
 
-    // Check connection
+    // Verificar conexión
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    //echo "Connected successfully";
 
     if (isset($_GET["submit"])) {
-        $number = $_GET['number'];
+        $number = htmlspecialchars($_GET['number']); // Sanitizar la entrada
 
         // Preparar la consulta
         $stmt = $conn->prepare("SELECT bookname, authorname FROM books WHERE number = ?");
